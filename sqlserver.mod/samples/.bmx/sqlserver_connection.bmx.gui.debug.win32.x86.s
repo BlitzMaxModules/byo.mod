@@ -35,11 +35,9 @@
 	extrn	_bbOnDebugLeaveScope
 	extrn	_bbStringClass
 	extrn	_bbStringConcat
-	extrn	_bbStringFromDouble
-	extrn	_bbStringFromFloat
 	extrn	_bbStringFromInt
-	extrn	_brl_blitz_DebugLog
 	extrn	_brl_blitz_NullObjectError
+	extrn	_brl_standardio_Print
 	extrn	_brl_system_Notify
 	extrn	_byo_sqlserver_TSQLServer
 	public	__bb_main
@@ -47,27 +45,25 @@
 __bb_main:
 	push	ebp
 	mov	ebp,esp
-	sub	esp,20
+	sub	esp,16
 	push	ebx
 	push	esi
-	cmp	dword [_84],0
-	je	_85
+	cmp	dword [_91],0
+	je	_92
 	mov	eax,0
 	pop	esi
 	pop	ebx
 	mov	esp,ebp
 	pop	ebp
 	ret
-_85:
-	mov	dword [_84],1
+_92:
+	mov	dword [_91],1
 	mov	dword [ebp-4],_bbNullObject
-	mov	dword [ebp-8],0
-	fldz
-	fstp	dword [ebp-12]
-	fldz
-	fstp	qword [ebp-20]
+	mov	dword [ebp-8],_bbNullObject
+	mov	dword [ebp-12],_bbNullObject
+	mov	dword [ebp-16],_bbNullObject
 	push	ebp
-	push	_74
+	push	_83
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
 	call	___bb_blitz_blitz
@@ -99,29 +95,27 @@ _85:
 	call	___bb_pcxloader_pcxloader
 	call	___bb_threads_threads
 	call	___bb_zipengine_zipengine
-	push	_31
+	push	_36
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	_byo_sqlserver_TSQLServer
 	call	_bbObjectNew
 	add	esp,4
 	mov	dword [ebp-4],eax
-	push	_34
+	push	_39
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	mov	dword [ebp-8],0
-	fldz
-	fstp	dword [ebp-12]
-	fldz
-	fstp	qword [ebp-20]
-	push	_38
+	mov	dword [ebp-8],_bbNullObject
+	mov	dword [ebp-12],_bbNullObject
+	mov	dword [ebp-16],_bbNullObject
+	push	_43
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	ebx,dword [ebp-4]
 	cmp	ebx,_bbNullObject
-	jne	_40
+	jne	_45
 	call	_brl_blitz_NullObjectError
-_40:
+_45:
 	push	_21
 	push	_20
 	push	_19
@@ -131,102 +125,72 @@ _40:
 	call	dword [eax+48]
 	add	esp,20
 	cmp	eax,0
-	je	_41
-	push	_42
+	je	_46
+	push	_47
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	ebx,dword [ebp-4]
 	cmp	ebx,_bbNullObject
-	jne	_44
+	jne	_49
 	call	_brl_blitz_NullObjectError
-_44:
+_49:
 	push	_22
 	push	ebx
 	mov	eax,dword [ebx]
 	call	dword [eax+52]
 	add	esp,8
-	push	_45
+	mov	dword [ebp-8],eax
+	push	_50
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	ebx,dword [ebp-4]
 	cmp	ebx,_bbNullObject
-	jne	_47
+	jne	_52
 	call	_brl_blitz_NullObjectError
-_47:
+_52:
+	push	_23
+	push	ebx
+	mov	eax,dword [ebx]
+	call	dword [eax+52]
+	add	esp,8
+	mov	dword [ebp-12],eax
+	push	_53
+	call	dword [_bbOnDebugEnterStm]
+	add	esp,4
+	mov	ebx,dword [ebp-4]
+	cmp	ebx,_bbNullObject
+	jne	_55
+	call	_brl_blitz_NullObjectError
+_55:
+	push	_24
+	push	ebx
+	mov	eax,dword [ebx]
+	call	dword [eax+52]
+	add	esp,8
+	mov	dword [ebp-16],eax
+	push	_56
+	call	dword [_bbOnDebugEnterStm]
+	add	esp,4
+	mov	ebx,dword [ebp-4]
+	cmp	ebx,_bbNullObject
+	jne	_58
+	call	_brl_blitz_NullObjectError
+_58:
 	push	0
 	push	ebx
 	mov	eax,dword [ebx]
-	call	dword [eax+92]
+	call	dword [eax+64]
 	add	esp,4
 	push	eax
 	call	_bbStringFromInt
 	add	esp,4
 	push	eax
-	push	_23
+	push	_25
 	call	_bbStringConcat
 	add	esp,8
 	push	eax
 	call	_brl_system_Notify
 	add	esp,8
-	push	_48
-	call	dword [_bbOnDebugEnterStm]
-	add	esp,4
-	mov	ebx,dword [ebp-4]
-	cmp	ebx,_bbNullObject
-	jne	_50
-	call	_brl_blitz_NullObjectError
-_50:
-	push	0
-	push	ebx
-	mov	eax,dword [ebx]
-	call	dword [eax+96]
-	add	esp,4
-	push	eax
-	push	_24
-	call	_bbStringConcat
-	add	esp,8
-	push	eax
-	call	_brl_system_Notify
-	add	esp,8
-	push	_51
-	call	dword [_bbOnDebugEnterStm]
-	add	esp,4
-	jmp	_25
-_27:
-	push	_54
-	call	dword [_bbOnDebugEnterStm]
-	add	esp,4
-	mov	ebx,dword [ebp-4]
-	cmp	ebx,_bbNullObject
-	jne	_56
-	call	_brl_blitz_NullObjectError
-_56:
-	mov	esi,dword [ebp-4]
-	cmp	esi,_bbNullObject
-	jne	_58
-	call	_brl_blitz_NullObjectError
-_58:
-	push	6
-	push	esi
-	mov	eax,dword [esi]
-	call	dword [eax+60]
-	add	esp,8
-	push	eax
-	push	_28
-	push	0
-	push	ebx
-	mov	eax,dword [ebx]
-	call	dword [eax+60]
-	add	esp,8
-	push	eax
-	call	_bbStringConcat
-	add	esp,8
-	push	eax
-	call	_bbStringConcat
-	add	esp,8
-	push	eax
-	call	_brl_blitz_DebugLog
-	add	esp,4
 	push	_59
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
@@ -235,98 +199,166 @@ _58:
 	jne	_61
 	call	_brl_blitz_NullObjectError
 _61:
-	push	1
-	push	ebx
-	mov	eax,dword [ebx]
-	call	dword [eax+64]
-	add	esp,8
-	mov	dword [ebp-8],eax
-	push	_62
-	call	dword [_bbOnDebugEnterStm]
-	add	esp,4
-	mov	ebx,dword [ebp-4]
-	cmp	ebx,_bbNullObject
-	jne	_64
-	call	_brl_blitz_NullObjectError
-_64:
-	push	2
+	push	0
 	push	ebx
 	mov	eax,dword [ebx]
 	call	dword [eax+68]
+	add	esp,4
+	push	eax
+	push	_26
+	call	_bbStringConcat
 	add	esp,8
-	fstp	dword [ebp-12]
+	push	eax
+	call	_brl_system_Notify
+	add	esp,8
+	push	_62
+	call	dword [_bbOnDebugEnterStm]
+	add	esp,4
+	jmp	_27
+_29:
 	push	_65
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	mov	ebx,dword [ebp-4]
+	mov	ebx,dword [ebp-8]
 	cmp	ebx,_bbNullObject
 	jne	_67
 	call	_brl_blitz_NullObjectError
 _67:
-	push	4
+	mov	esi,dword [ebp-8]
+	cmp	esi,_bbNullObject
+	jne	_69
+	call	_brl_blitz_NullObjectError
+_69:
+	push	6
+	push	esi
+	mov	eax,dword [esi]
+	call	dword [eax+48]
+	add	esp,8
+	push	eax
+	push	_31
+	push	0
 	push	ebx
 	mov	eax,dword [ebx]
-	call	dword [eax+72]
+	call	dword [eax+48]
 	add	esp,8
-	fstp	qword [ebp-20]
-	push	_68
-	call	dword [_bbOnDebugEnterStm]
-	add	esp,4
-	push	dword [ebp-8]
-	call	_bbStringFromInt
-	add	esp,4
 	push	eax
-	call	_brl_blitz_DebugLog
-	add	esp,4
-	push	_69
-	call	dword [_bbOnDebugEnterStm]
-	add	esp,4
-	push	dword [ebp-12]
-	call	_bbStringFromFloat
-	add	esp,4
+	push	_30
+	call	_bbStringConcat
+	add	esp,8
 	push	eax
-	call	_brl_blitz_DebugLog
+	call	_bbStringConcat
+	add	esp,8
+	push	eax
+	call	_bbStringConcat
+	add	esp,8
+	push	eax
+	call	_brl_standardio_Print
 	add	esp,4
 	push	_70
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	fld	qword [ebp-20]
-	sub	esp,8
-	fstp	qword [esp]
-	call	_bbStringFromDouble
+	mov	ebx,dword [ebp-12]
+	cmp	ebx,_bbNullObject
+	jne	_72
+	call	_brl_blitz_NullObjectError
+_72:
+	mov	esi,dword [ebp-12]
+	cmp	esi,_bbNullObject
+	jne	_74
+	call	_brl_blitz_NullObjectError
+_74:
+	push	1
+	push	esi
+	mov	eax,dword [esi]
+	call	dword [eax+48]
 	add	esp,8
 	push	eax
-	call	_brl_blitz_DebugLog
-	add	esp,4
-_25:
-	mov	ebx,dword [ebp-4]
-	cmp	ebx,_bbNullObject
-	jne	_53
-	call	_brl_blitz_NullObjectError
-_53:
+	push	_31
+	push	0
 	push	ebx
 	mov	eax,dword [ebx]
-	call	dword [eax+84]
+	call	dword [eax+48]
+	add	esp,8
+	push	eax
+	push	_32
+	call	_bbStringConcat
+	add	esp,8
+	push	eax
+	call	_bbStringConcat
+	add	esp,8
+	push	eax
+	call	_bbStringConcat
+	add	esp,8
+	push	eax
+	call	_brl_standardio_Print
+	add	esp,4
+	push	_75
+	call	dword [_bbOnDebugEnterStm]
+	add	esp,4
+	mov	ebx,dword [ebp-16]
+	cmp	ebx,_bbNullObject
+	jne	_77
+	call	_brl_blitz_NullObjectError
+_77:
+	mov	esi,dword [ebp-16]
+	cmp	esi,_bbNullObject
+	jne	_79
+	call	_brl_blitz_NullObjectError
+_79:
+	push	1
+	push	esi
+	mov	eax,dword [esi]
+	call	dword [eax+48]
+	add	esp,8
+	push	eax
+	push	_31
+	push	0
+	push	ebx
+	mov	eax,dword [ebx]
+	call	dword [eax+48]
+	add	esp,8
+	push	eax
+	push	_33
+	call	_bbStringConcat
+	add	esp,8
+	push	eax
+	call	_bbStringConcat
+	add	esp,8
+	push	eax
+	call	_bbStringConcat
+	add	esp,8
+	push	eax
+	call	_brl_standardio_Print
+	add	esp,4
+_27:
+	mov	ebx,dword [ebp-8]
+	cmp	ebx,_bbNullObject
+	jne	_64
+	call	_brl_blitz_NullObjectError
+_64:
+	push	ebx
+	mov	eax,dword [ebx]
+	call	dword [eax+72]
 	add	esp,4
 	cmp	eax,0
-	jne	_27
-_26:
-_41:
-	push	_71
+	jne	_29
+_28:
+	push	_80
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	ebx,dword [ebp-4]
 	cmp	ebx,_bbNullObject
-	jne	_73
+	jne	_82
 	call	_brl_blitz_NullObjectError
-_73:
+_82:
 	push	ebx
 	mov	eax,dword [ebx]
-	call	dword [eax+100]
+	call	dword [eax+72]
 	add	esp,4
+_46:
 	mov	ebx,0
-	jmp	_29
-_29:
+	jmp	_34
+_34:
 	call	dword [_bbOnDebugLeaveScope]
 	mov	eax,ebx
 	pop	esi
@@ -336,63 +368,59 @@ _29:
 	ret
 	section	"data" data writeable align 8
 	align	4
-_84:
+_91:
 	dd	0
-_75:
+_84:
 	db	"sqlserver_connection",0
-_76:
+_85:
 	db	"con1",0
-_77:
+_86:
 	db	":byo.sqlserver.TSQLServer",0
-_78:
-	db	"nInt",0
-_79:
-	db	"i",0
-_80:
-	db	"nFloat",0
-_81:
-	db	"f",0
-_82:
-	db	"nDouble",0
-_83:
-	db	"d",0
+_87:
+	db	"rs1",0
+_88:
+	db	":byo.sqlserver.TCursor",0
+_89:
+	db	"rs2",0
+_90:
+	db	"rs3",0
 	align	4
-_74:
+_83:
 	dd	1
-	dd	_75
+	dd	_84
 	dd	2
-	dd	_76
-	dd	_77
+	dd	_85
+	dd	_86
 	dd	-4
 	dd	2
-	dd	_78
-	dd	_79
+	dd	_87
+	dd	_88
 	dd	-8
 	dd	2
-	dd	_80
-	dd	_81
+	dd	_89
+	dd	_88
 	dd	-12
 	dd	2
-	dd	_82
-	dd	_83
-	dd	-20
+	dd	_90
+	dd	_88
+	dd	-16
 	dd	0
-_32:
+_37:
 	db	"$BMXPATH/mod/byo.mod/sqlserver.mod/samples/sqlserver_connection.bmx",0
 	align	4
-_31:
-	dd	_32
+_36:
+	dd	_37
 	dd	3
 	dd	1
 	align	4
-_34:
-	dd	_32
-	dd	5
+_39:
+	dd	_37
+	dd	4
 	dd	1
 	align	4
-_38:
-	dd	_32
-	dd	7
+_43:
+	dd	_37
+	dd	6
 	dd	1
 	align	4
 _21:
@@ -419,9 +447,9 @@ _18:
 	dd	14
 	dw	66,89,79,92,83,81,76,69,88,80,82,69,83,83
 	align	4
-_42:
-	dd	_32
-	dd	8
+_47:
+	dd	_37
+	dd	7
 	dd	2
 	align	4
 _22:
@@ -431,75 +459,97 @@ _22:
 	dw	83,69,76,69,67,84,32,42,32,70,82,79,77,32,83,89
 	dw	83,68,65,84,65,66,65,83,69,83
 	align	4
-_45:
-	dd	_32
-	dd	10
+_50:
+	dd	_37
+	dd	8
 	dd	2
 	align	4
 _23:
 	dd	_bbStringClass
 	dd	2147483647
-	dd	11
-	dw	69,114,114,111,114,67,111,100,101,58,32
+	dd	24
+	dw	83,69,76,69,67,84,32,42,32,70,82,79,77,32,83,89
+	dw	83,79,66,74,69,67,84,83
 	align	4
-_48:
-	dd	_32
-	dd	11
+_53:
+	dd	_37
+	dd	9
 	dd	2
 	align	4
 _24:
 	dd	_bbStringClass
 	dd	2147483647
+	dd	23
+	dw	83,69,76,69,67,84,32,42,32,70,82,79,77,32,83,89
+	dw	83,76,79,71,73,78,83
+	align	4
+_56:
+	dd	_37
+	dd	11
+	dd	2
+	align	4
+_25:
+	dd	_bbStringClass
+	dd	2147483647
+	dd	11
+	dw	69,114,114,111,114,67,111,100,101,58,32
+	align	4
+_59:
+	dd	_37
+	dd	12
+	dd	2
+	align	4
+_26:
+	dd	_bbStringClass
+	dd	2147483647
 	dd	7
 	dw	69,114,114,111,114,58,32
 	align	4
-_51:
-	dd	_32
-	dd	13
+_62:
+	dd	_37
+	dd	14
 	dd	2
 	align	4
-_54:
-	dd	_32
-	dd	14
+_65:
+	dd	_37
+	dd	15
 	dd	3
 	align	4
-_28:
+_31:
 	dd	_bbStringClass
 	dd	2147483647
 	dd	3
 	dw	32,45,32
 	align	4
-_59:
-	dd	_32
-	dd	15
+_30:
+	dd	_bbStringClass
+	dd	2147483647
 	dd	3
+	dw	49,41,32
 	align	4
-_62:
-	dd	_32
+_70:
+	dd	_37
 	dd	16
 	dd	3
 	align	4
-_65:
-	dd	_32
+_32:
+	dd	_bbStringClass
+	dd	2147483647
+	dd	3
+	dw	50,41,32
+	align	4
+_75:
+	dd	_37
 	dd	17
 	dd	3
 	align	4
-_68:
-	dd	_32
-	dd	18
+_33:
+	dd	_bbStringClass
+	dd	2147483647
 	dd	3
+	dw	51,41,32
 	align	4
-_69:
-	dd	_32
-	dd	19
-	dd	3
-	align	4
-_70:
-	dd	_32
+_80:
+	dd	_37
 	dd	20
-	dd	3
-	align	4
-_71:
-	dd	_32
-	dd	25
-	dd	1
+	dd	2
